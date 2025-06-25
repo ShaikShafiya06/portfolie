@@ -116,7 +116,7 @@ const Index = () => {
             <div className="relative">
               <div className="w-32 h-32 mx-auto rounded-full overflow-hidden shadow-2xl ring-4 ring-orange-200/50 relative">
                 <img 
-                  src="/lovable-uploads/2cfda9f9-bbe6-49eb-9ad9-cff40a9ec421.png" 
+                  src="/lovable-uploads/8ad74d43-fffb-4244-b2f7-6543436a0511.png" 
                   alt="Shaik Shafiya - Frontend Developer"
                   className="w-full h-full object-cover"
                 />
