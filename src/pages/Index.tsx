@@ -114,10 +114,17 @@ const Index = () => {
           {/* Profile Section */}
           <div className="text-center space-y-6">
             <div className="relative">
-              <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-orange-400 via-yellow-400 to-orange-500 flex items-center justify-center text-white text-4xl font-bold shadow-xl">
-                SS
+              <div className="w-32 h-32 mx-auto rounded-full overflow-hidden shadow-2xl ring-4 ring-orange-200/50 relative">
+                <img 
+                  src="/lovable-uploads/b12d529e-3b69-4530-b5b5-5a054e21d740.png" 
+                  alt="Shaik Shafiya - Frontend Developer"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-orange-500/10 to-transparent"></div>
               </div>
-              <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-green-400 rounded-full border-4 border-white"></div>
+              <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-green-400 rounded-full border-4 border-white shadow-lg animate-pulse"></div>
+              <div className="absolute -top-1 -left-1 w-4 h-4 bg-orange-400 rounded-full border-2 border-white"></div>
+              <div className="absolute top-2 right-0 w-3 h-3 bg-yellow-400 rounded-full border-2 border-white"></div>
             </div>
             <div>
               <h1 className="text-2xl font-bold text-gray-900">Shaik Shafiya</h1>
