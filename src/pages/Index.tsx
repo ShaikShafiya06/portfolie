@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Menu, X, Github, Linkedin, Mail, Phone, MapPin, ExternalLink, Calendar, Award, Briefcase, User, Code, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -6,10 +5,18 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import emailjs from '@emailjs/browser';
+import { toast } from '@/components/ui/use-toast';
 
 const Index = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
 
   const skills = [
     { name: 'Java', level: 90 },
@@ -87,6 +94,64 @@ const Index = () => {
     { id: 'achievements', label: 'Achievements', icon: Award },
     { id: 'contact', label: 'Contact', icon: Mail }
   ];
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!formData.name || !formData.email || !formData.message) {
+      toast({
+        title: "Error",
+        description: "Please fill in all fields",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      await emailjs.send(
+        'service_fq9kv4w', // Service ID
+        'template_nis7awi', // Template ID
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_name: 'Shaik Shafiya'
+        },
+        'mLnXg6-dnwFHrNhKC' // Public Key
+      );
+
+      toast({
+        title: "Success!",
+        description: "Your message has been sent successfully. I'll get back to you soon!",
+      });
+
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again or contact me directly.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-yellow-50 to-orange-100 relative overflow-hidden">
@@ -404,28 +469,60 @@ const Index = () => {
                     I'd love to hear from you! Send me a message and I'll get back to you soon.
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                      Name
-                    </label>
-                    <Input id="name" placeholder="Your name" className="border-gray-300" />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                      Email
-                    </label>
-                    <Input id="email" type="email" placeholder="your.email@example.com" className="border-gray-300" />
-                  </div>
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                      Message
-                    </label>
-                    <Textarea id="message" placeholder="Your message..." rows={4} className="border-gray-300" />
-                  </div>
-                  <Button className="w-full bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white py-3 rounded-xl">
-                    Send Message
-                  </Button>
+                <CardContent>
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                        Name
+                      </label>
+                      <Input 
+                        id="name" 
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        placeholder="Your name" 
+                        className="border-gray-300"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                        Email
+                      </label>
+                      <Input 
+                        id="email" 
+                        name="email"
+                        type="email" 
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        placeholder="your.email@example.com" 
+                        className="border-gray-300"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                        Message
+                      </label>
+                      <Textarea 
+                        id="message" 
+                        name="message"
+                        value={formData.message}
+                        onChange={handleInputChange}
+                        placeholder="Your message..." 
+                        rows={4} 
+                        className="border-gray-300"
+                        required
+                      />
+                    </div>
+                    <Button 
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white py-3 rounded-xl disabled:opacity-50"
+                    >
+                      {isSubmitting ? 'Sending...' : 'Send Message'}
+                    </Button>
+                  </form>
                 </CardContent>
               </Card>
 
