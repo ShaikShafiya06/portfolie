@@ -50,8 +50,8 @@ const Index = () => {
       title: 'Ice Cream Website',
       description: 'Responsive branding site featuring image gallery, video integration, navbar, and contact form.',
       tech: ['HTML', 'CSS', 'Responsive Design'],
-      github: 'https://github.com/ShaikShafiya06',
-      live: 'http://127.0.0.1:5500/index.html',
+      github: 'https://github.com/ShaikShafiya06/Ice-Cream-Website',
+      live: 'https://shaikshafiya06.github.io/Ice-Cream-Website/',
       date: 'Jun 2025',
       type: 'Web Project'
     }
