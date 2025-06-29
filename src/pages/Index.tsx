@@ -31,6 +31,14 @@ const Index = () => {
 
   const projects = [
     {
+      title: 'SKEcommerce',
+      description: 'A full-featured e-commerce platform built with modern web technologies, featuring product catalog, shopping cart, user authentication, and payment integration.',
+      tech: ['React', 'Node.js', 'MongoDB', 'Express', 'Stripe'],
+      github: 'https://github.com/ShaikShafiya06/skecommerce',
+      date: 'Dec 2024',
+      type: 'Full Stack Project'
+    },
+    {
       title: 'Sudocode Match Puzzle',
       description: 'A mobile-friendly puzzle game using HTML, CSS, and JavaScript with animations, timers, and sound effects.',
       tech: ['JavaScript', 'HTML', 'CSS'],
