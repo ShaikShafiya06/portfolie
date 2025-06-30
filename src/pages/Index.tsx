@@ -61,19 +61,65 @@ const Index = () => {
     'TypeScript', 'Git', 'GitHub', 'Responsive Design'
   ];
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-      <div className="container mx-auto px-4 py-8 max-w-6xl">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 relative overflow-hidden">
+      {/* Tech Network Background Pattern */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-cyan-400/20"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)]"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
+      </div>
+
+      {/* Navigation */}
+      <nav className="relative z-10 flex justify-between items-center px-6 md:px-12 py-6">
+        <div className="flex items-center space-x-2">
+          <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full flex items-center justify-center">
+            <span className="text-white font-bold text-lg">SS</span>
+          </div>
+          <span className="text-white font-semibold text-xl">SHAFIYA</span>
+        </div>
+        
+        <div className="hidden md:flex space-x-8">
+          <button onClick={() => scrollToSection('home')} className="text-white hover:text-cyan-400 transition-colors px-4 py-2 rounded-lg hover:bg-white/10">
+            Home
+          </button>
+          <button onClick={() => scrollToSection('projects')} className="text-white hover:text-cyan-400 transition-colors px-4 py-2 rounded-lg hover:bg-white/10">
+            Projects
+          </button>
+          <button onClick={() => scrollToSection('skills')} className="text-white hover:text-cyan-400 transition-colors px-4 py-2 rounded-lg hover:bg-white/10">
+            Skills
+          </button>
+          <button onClick={() => scrollToSection('contact')} className="text-white hover:text-cyan-400 transition-colors px-4 py-2 rounded-lg hover:bg-white/10">
+            Contact
+          </button>
+        </div>
+      </nav>
+
+      <div className="container mx-auto px-4 py-8 max-w-6xl relative z-10">
         {/* Hero Section */}
-        <section className="text-center py-20 mb-16">
+        <section id="home" className="text-center py-20 mb-16">
           <div className="mb-8">
-            <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6">
-              Shaik Shafiya
+            <h1 className="text-6xl md:text-7xl font-bold text-white mb-6">
+              Full Stack Developer
             </h1>
-            <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Full Stack Web Developer specializing in modern web technologies and user-centered design
+            <p className="text-xl md:text-2xl text-blue-200 mb-12 max-w-4xl mx-auto leading-relaxed">
+              Building robust web applications with Java Spring & Modern Frontend Technologies
             </p>
-            <div className="flex flex-wrap justify-center gap-4 text-gray-500">
+            <Button 
+              onClick={() => scrollToSection('projects')}
+              className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              View Resume
+            </Button>
+            <div className="flex flex-wrap justify-center gap-6 text-blue-200 mt-12">
               <div className="flex items-center gap-2">
                 <Mail className="h-5 w-5" />
                 <span>shaikshafiya06@gmail.com</span>
@@ -89,12 +135,12 @@ const Index = () => {
         {/* About Section */}
         <section className="mb-20">
           <div className="flex items-center gap-3 mb-8">
-            <User className="h-8 w-8 text-blue-600" />
-            <h2 className="text-3xl font-bold text-gray-800">About Me</h2>
+            <User className="h-8 w-8 text-cyan-400" />
+            <h2 className="text-3xl font-bold text-white">About Me</h2>
           </div>
-          <Card className="border-0 shadow-lg">
+          <Card className="border-0 shadow-2xl bg-white/10 backdrop-blur-lg">
             <CardContent className="p-8">
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="text-lg text-blue-100 leading-relaxed">
                 A passionate Full Stack Web Developer with expertise in Java, Python, JavaScript, and modern web technologies. 
                 I enjoy creating seamless user experiences and building robust applications that solve real-world problems. 
                 With a strong foundation in both frontend and backend development, I bring ideas to life through clean, 
@@ -105,16 +151,16 @@ const Index = () => {
         </section>
 
         {/* Skills Section */}
-        <section className="mb-20">
+        <section id="skills" className="mb-20">
           <div className="flex items-center gap-3 mb-8">
-            <Code className="h-8 w-8 text-blue-600" />
-            <h2 className="text-3xl font-bold text-gray-800">Technical Skills</h2>
+            <Code className="h-8 w-8 text-cyan-400" />
+            <h2 className="text-3xl font-bold text-white">Technical Skills</h2>
           </div>
-          <Card className="border-0 shadow-lg">
+          <Card className="border-0 shadow-2xl bg-white/10 backdrop-blur-lg">
             <CardContent className="p-8">
               <div className="flex flex-wrap gap-3">
                 {skills.map((skill, index) => (
-                  <Badge key={index} variant="secondary" className="px-4 py-2 text-sm font-medium">
+                  <Badge key={index} variant="secondary" className="px-4 py-2 text-sm font-medium bg-gradient-to-r from-blue-500/20 to-cyan-500/20 text-blue-100 border-blue-400/30 hover:bg-blue-400/30 transition-colors">
                     {skill}
                   </Badge>
                 ))}
@@ -124,39 +170,39 @@ const Index = () => {
         </section>
 
         {/* Projects Section */}
-        <section className="mb-20">
+        <section id="projects" className="mb-20">
           <div className="flex items-center gap-3 mb-8">
-            <Briefcase className="h-8 w-8 text-blue-600" />
-            <h2 className="text-3xl font-bold text-gray-800">Featured Projects</h2>
+            <Briefcase className="h-8 w-8 text-cyan-400" />
+            <h2 className="text-3xl font-bold text-white">Featured Projects</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
-              <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <Card key={index} className="border-0 shadow-2xl hover:shadow-3xl transition-all duration-300 bg-white/10 backdrop-blur-lg hover:bg-white/15">
                 <CardHeader className="pb-4">
                   <div className="flex justify-between items-start mb-2">
-                    <CardTitle className="text-xl font-semibold text-gray-800">{project.title}</CardTitle>
-                    <Badge variant="outline" className="text-xs">{project.date}</Badge>
+                    <CardTitle className="text-xl font-semibold text-white">{project.title}</CardTitle>
+                    <Badge variant="outline" className="text-xs text-cyan-400 border-cyan-400">{project.date}</Badge>
                   </div>
-                  <CardDescription className="text-blue-600 font-medium">{project.type}</CardDescription>
+                  <CardDescription className="text-cyan-300 font-medium">{project.type}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600 mb-6 leading-relaxed">{project.description}</p>
+                  <p className="text-blue-100 mb-6 leading-relaxed">{project.description}</p>
                   <div className="flex flex-wrap gap-2 mb-6">
                     {project.tech.map((tech, i) => (
-                      <Badge key={i} variant="secondary" className="text-xs">
+                      <Badge key={i} variant="secondary" className="text-xs bg-blue-500/20 text-blue-200 border-blue-400/30">
                         {tech}
                       </Badge>
                     ))}
                   </div>
-                  <Separator className="mb-4" />
+                  <Separator className="mb-4 bg-blue-400/30" />
                   <div className="flex gap-3">
-                    <Button asChild variant="outline" size="sm" className="flex-1">
+                    <Button asChild variant="outline" size="sm" className="flex-1 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-slate-900">
                       <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                         <Github className="h-4 w-4" />
                         Code
                       </a>
                     </Button>
-                    <Button asChild size="sm" className="flex-1">
+                    <Button asChild size="sm" className="flex-1 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600">
                       <a href={project.live} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                         <Eye className="h-4 w-4" />
                         Live Demo
@@ -170,28 +216,28 @@ const Index = () => {
         </section>
 
         {/* Contact Section */}
-        <section className="mb-16">
+        <section id="contact" className="mb-16">
           <div className="flex items-center gap-3 mb-8">
-            <Mail className="h-8 w-8 text-blue-600" />
-            <h2 className="text-3xl font-bold text-gray-800">Get In Touch</h2>
+            <Mail className="h-8 w-8 text-cyan-400" />
+            <h2 className="text-3xl font-bold text-white">Get In Touch</h2>
           </div>
-          <Card className="border-0 shadow-lg max-w-2xl mx-auto">
+          <Card className="border-0 shadow-2xl max-w-2xl mx-auto bg-white/10 backdrop-blur-lg">
             <CardHeader>
-              <CardTitle className="text-center">Let's Work Together</CardTitle>
-              <CardDescription className="text-center">
+              <CardTitle className="text-center text-white">Let's Work Together</CardTitle>
+              <CardDescription className="text-center text-blue-200">
                 Have a project in mind? I'd love to hear about it!
               </CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium text-blue-200 mb-2">
                     Your Email
                   </label>
                   <input
                     type="email"
                     id="email"
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                    className="w-full p-3 border border-blue-400/30 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition-all bg-white/10 text-white placeholder-blue-300"
                     placeholder="your.email@example.com"
                     value={email}
                     onChange={handleEmailChange}
@@ -199,12 +245,12 @@ const Index = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="message" className="block text-sm font-medium text-blue-200 mb-2">
                     Message
                   </label>
                   <textarea
                     id="message"
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all resize-none"
+                    className="w-full p-3 border border-blue-400/30 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition-all resize-none bg-white/10 text-white placeholder-blue-300"
                     rows={5}
                     placeholder="Tell me about your project..."
                     value={message}
@@ -212,7 +258,7 @@ const Index = () => {
                     required
                   />
                 </div>
-                <Button type="submit" className="w-full py-3 text-lg">
+                <Button type="submit" className="w-full py-3 text-lg bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600">
                   Send Message
                 </Button>
               </form>
@@ -221,14 +267,14 @@ const Index = () => {
         </section>
 
         {/* Footer Section */}
-        <footer className="text-center py-8 border-t border-gray-200">
+        <footer className="text-center py-8 border-t border-blue-400/30">
           <div className="mb-4">
-            <a href="mailto:shaikshafiya06@gmail.com" className="text-blue-600 hover:text-blue-800 transition-colors inline-flex items-center gap-2">
+            <a href="mailto:shaikshafiya06@gmail.com" className="text-cyan-400 hover:text-cyan-300 transition-colors inline-flex items-center gap-2">
               <Mail className="h-5 w-5" />
               shaikshafiya06@gmail.com
             </a>
           </div>
-          <p className="text-gray-500">
+          <p className="text-blue-200">
             &copy; {new Date().getFullYear()} Shaik Shafiya. All rights reserved.
           </p>
         </footer>
