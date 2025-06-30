@@ -70,8 +70,21 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 relative overflow-hidden">
+      {/* Background Video */}
+      <div className="absolute inset-0 z-0">
+        <video 
+          autoPlay 
+          muted 
+          loop 
+          className="w-full h-full object-cover opacity-30"
+        >
+          <source src="https://storage.googleapis.com/gpt-engineer-file-uploads/t7tm4T4X3RPyx5eElAvyiGlygTm2/8ad74d43-fffb-4244-b2f7-6543436a0511" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-blue-900/80 to-slate-800/80"></div>
+      </div>
+
       {/* Tech Network Background Pattern */}
-      <div className="absolute inset-0 opacity-20">
+      <div className="absolute inset-0 opacity-20 z-1">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-cyan-400/20"></div>
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)]"></div>
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
@@ -105,28 +118,45 @@ const Index = () => {
 
       <div className="container mx-auto px-4 py-8 max-w-6xl relative z-10">
         {/* Hero Section */}
-        <section id="home" className="text-center py-20 mb-16">
-          <div className="mb-8">
-            <h1 className="text-6xl md:text-7xl font-bold text-white mb-6">
-              Full Stack Developer
-            </h1>
-            <p className="text-xl md:text-2xl text-blue-200 mb-12 max-w-4xl mx-auto leading-relaxed">
-              Building robust web applications with Java Spring & Modern Frontend Technologies
-            </p>
-            <Button 
-              onClick={() => scrollToSection('projects')}
-              className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
-            >
-              View Resume
-            </Button>
-            <div className="flex flex-wrap justify-center gap-6 text-blue-200 mt-12">
-              <div className="flex items-center gap-2">
-                <Mail className="h-5 w-5" />
-                <span>shaikshafiya06@gmail.com</span>
+        <section id="home" className="py-20 mb-16">
+          <div className="flex flex-col lg:flex-row items-center gap-12">
+            {/* Profile Photo - Left Side */}
+            <div className="lg:w-1/3 flex justify-center">
+              <div className="relative">
+                <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-gradient-to-r from-cyan-400 to-blue-500 shadow-2xl">
+                  <img 
+                    src="/lovable-uploads/317456c9-6dd7-4873-8ea0-e1191a02b922.png" 
+                    alt="Shaik Shafiya"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-cyan-400/20 to-blue-500/20"></div>
               </div>
-              <div className="flex items-center gap-2">
-                <Github className="h-5 w-5" />
-                <span>ShaikShafiya06</span>
+            </div>
+
+            {/* Content - Right Side */}
+            <div className="lg:w-2/3 text-center lg:text-left">
+              <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+                Full Stack Developer
+              </h1>
+              <p className="text-xl md:text-2xl text-blue-200 mb-12 max-w-3xl leading-relaxed">
+                Building robust web applications with Java Spring & Modern Frontend Technologies
+              </p>
+              <Button 
+                onClick={() => scrollToSection('projects')}
+                className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                View Projects
+              </Button>
+              <div className="flex flex-wrap justify-center lg:justify-start gap-6 text-blue-200 mt-12">
+                <div className="flex items-center gap-2">
+                  <Mail className="h-5 w-5" />
+                  <span>shaikshafiya06@gmail.com</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Github className="h-5 w-5" />
+                  <span>ShaikShafiya06</span>
+                </div>
               </div>
             </div>
           </div>
@@ -156,11 +186,15 @@ const Index = () => {
             <Code className="h-8 w-8 text-cyan-400" />
             <h2 className="text-3xl font-bold text-white">Technical Skills</h2>
           </div>
-          <Card className="border-0 shadow-2xl bg-white/10 backdrop-blur-lg">
+          <Card className="border-0 shadow-2xl bg-white/20 backdrop-blur-lg">
             <CardContent className="p-8">
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-4">
                 {skills.map((skill, index) => (
-                  <Badge key={index} variant="secondary" className="px-4 py-2 text-sm font-medium bg-gradient-to-r from-blue-500/20 to-cyan-500/20 text-blue-100 border-blue-400/30 hover:bg-blue-400/30 transition-colors">
+                  <Badge 
+                    key={index} 
+                    variant="secondary" 
+                    className="px-6 py-3 text-base font-semibold bg-gradient-to-r from-cyan-500/30 to-blue-500/30 text-white border-2 border-cyan-400/50 hover:bg-cyan-400/40 hover:border-cyan-300 transition-all duration-300 shadow-lg"
+                  >
                     {skill}
                   </Badge>
                 ))}
