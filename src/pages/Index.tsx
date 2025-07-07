@@ -132,8 +132,8 @@ const Index = () => {
                   <img 
                     src="/lovable-uploads/profile-new.png" 
                     alt="Shaik Shafiya"
-                    className="w-full h-full object-cover object-center"
-                    style={{ imageRendering: 'crisp-edges' }}
+                    className="w-full h-full object-cover object-top scale-110"
+                    style={{ imageRendering: 'crisp-edges', objectPosition: 'center 20%' }}
                   />
                 </div>
                 <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-cyan-400/20 to-blue-500/20"></div>
