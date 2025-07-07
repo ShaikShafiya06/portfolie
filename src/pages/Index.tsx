@@ -9,20 +9,27 @@ import { Github, ExternalLink, Mail, Phone, MapPin, Calendar, Code, Eye, User, B
 const Index = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleEmailChange = (e: any) => {
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   };
 
-  const handleMessageChange = (e: any) => {
+  const handleMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setMessage(e.target.value);
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Email:', email);
     console.log('Message:', message);
-    // Here you would typically handle the form submission, e.g., sending the data to a server
+    setIsSubmitted(true);
+    // Reset form after 3 seconds
+    setTimeout(() => {
+      setEmail('');
+      setMessage('');
+      setIsSubmitted(false);
+    }, 3000);
   };
 
   const projects = [
@@ -125,7 +132,7 @@ const Index = () => {
               <div className="relative">
                 <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-gradient-to-r from-cyan-400 to-blue-500 shadow-2xl">
                   <img 
-                    src="/lovable-uploads/317456c9-6dd7-4873-8ea0-e1191a02b922.png" 
+                    src="/lovable-uploads/ac46b297-6684-4ce9-baa0-2176b8b6bcee.png" 
                     alt="Shaik Shafiya"
                     className="w-full h-full object-cover"
                   />
@@ -263,39 +270,46 @@ const Index = () => {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-blue-200 mb-2">
-                    Your Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    className="w-full p-3 border border-blue-400/30 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition-all bg-white/10 text-white placeholder-blue-300"
-                    placeholder="your.email@example.com"
-                    value={email}
-                    onChange={handleEmailChange}
-                    required
-                  />
+              {isSubmitted ? (
+                <div className="text-center py-8">
+                  <div className="text-green-400 text-lg font-semibold mb-2">Message Sent Successfully!</div>
+                  <p className="text-blue-200">Thank you for reaching out. I'll get back to you soon.</p>
                 </div>
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-blue-200 mb-2">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    className="w-full p-3 border border-blue-400/30 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition-all resize-none bg-white/10 text-white placeholder-blue-300"
-                    rows={5}
-                    placeholder="Tell me about your project..."
-                    value={message}
-                    onChange={handleMessageChange}
-                    required
-                  />
-                </div>
-                <Button type="submit" className="w-full py-3 text-lg bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600">
-                  Send Message
-                </Button>
-              </form>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-cyan-200 mb-2">
+                      Your Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      className="w-full p-3 border border-blue-400/30 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition-all bg-white/10 text-white placeholder-blue-300"
+                      placeholder="your.email@example.com"
+                      value={email}
+                      onChange={handleEmailChange}
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-cyan-200 mb-2">
+                      Message
+                    </label>
+                    <textarea
+                      id="message"
+                      className="w-full p-3 border border-blue-400/30 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition-all resize-none bg-white/10 text-white placeholder-blue-300"
+                      rows={5}
+                      placeholder="Tell me about your project..."
+                      value={message}
+                      onChange={handleMessageChange}
+                      required
+                    />
+                  </div>
+                  <Button type="submit" className="w-full py-3 text-lg bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600">
+                    Send Message
+                  </Button>
+                </form>
+              )}
             </CardContent>
           </Card>
         </section>
