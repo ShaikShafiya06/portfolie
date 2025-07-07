@@ -81,11 +81,15 @@ const Index = () => {
           autoPlay 
           muted 
           loop 
-          className="w-full h-full object-cover opacity-30"
+          className="w-full h-full object-cover opacity-20"
+          onError={(e) => {
+            console.log('Video failed to load, using fallback');
+            e.currentTarget.style.display = 'none';
+          }}
         >
           <source src="https://storage.googleapis.com/gpt-engineer-file-uploads/t7tm4T4X3RPyx5eElAvyiGlygTm2/8ad74d43-fffb-4244-b2f7-6543436a0511" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-blue-900/80 to-slate-800/80"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-blue-900/85 to-slate-800/90"></div>
       </div>
 
       {/* Tech Network Background Pattern */}
@@ -127,42 +131,52 @@ const Index = () => {
           <div className="flex flex-col lg:flex-row items-center gap-12">
             {/* Profile Photo - Left Side */}
             <div className="lg:w-1/3 flex justify-center">
-              <div className="relative">
-                <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-gradient-to-r from-cyan-400 to-blue-500 shadow-2xl">
+              <div className="relative group">
+                <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-gradient-to-r from-cyan-400 to-blue-500 shadow-2xl hover:shadow-cyan-500/25 transition-all duration-500">
                   <img 
                     src="/lovable-uploads/profile-updated.png" 
                     alt="Shaik Shafiya"
-                    className="w-full h-full object-cover scale-110"
+                    className="w-full h-full object-cover scale-110 group-hover:scale-115 transition-transform duration-500"
                     style={{ imageRendering: 'crisp-edges', objectPosition: 'center 15%' }}
                   />
                 </div>
-                <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-cyan-400/20 to-blue-500/20"></div>
+                <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-cyan-400/20 to-blue-500/20 group-hover:from-cyan-400/30 group-hover:to-blue-500/30 transition-all duration-500"></div>
+                <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 opacity-20 blur group-hover:opacity-40 transition-opacity duration-500"></div>
               </div>
             </div>
 
             {/* Content - Right Side */}
             <div className="lg:w-2/3 text-center lg:text-left">
-              <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-300 bg-clip-text text-transparent animate-fade-in">
+              <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-300 bg-clip-text text-transparent animate-fade-in hover:scale-105 transition-transform duration-300">
                 Full Stack Developer
               </h1>
-              <p className="text-xl md:text-2xl text-blue-200 mb-12 max-w-3xl leading-relaxed">
+              <p className="text-xl md:text-2xl text-blue-200 mb-12 max-w-3xl leading-relaxed animate-fade-in opacity-90">
                 Building robust web applications with Java Spring & Modern Frontend Technologies
               </p>
-              <Button 
-                onClick={() => scrollToSection('projects')}
-                className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                View Projects
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <Button 
+                  onClick={() => scrollToSection('projects')}
+                  className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+                >
+                  View Projects
+                </Button>
+                <Button 
+                  onClick={() => scrollToSection('contact')}
+                  variant="outline"
+                  className="border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-slate-900 px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+                >
+                  Contact Me  
+                </Button>
+              </div>
               <div className="flex flex-wrap justify-center lg:justify-start gap-6 text-blue-200 mt-12">
-                <div className="flex items-center gap-2">
-                  <Mail className="h-5 w-5" />
+                <a href="mailto:shaikshafiya06@gmail.com" className="flex items-center gap-2 hover:text-cyan-400 transition-colors duration-300 group">
+                  <Mail className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
                   <span>shaikshafiya06@gmail.com</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Github className="h-5 w-5" />
+                </a>
+                <a href="https://github.com/ShaikShafiya06" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-cyan-400 transition-colors duration-300 group">
+                  <Github className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
                   <span>ShaikShafiya06</span>
-                </div>
+                </a>
               </div>
             </div>
           </div>
