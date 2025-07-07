@@ -130,10 +130,10 @@ const Index = () => {
               <div className="relative">
                 <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-gradient-to-r from-cyan-400 to-blue-500 shadow-2xl">
                   <img 
-                    src="/lovable-uploads/profile-new.png" 
+                    src="/lovable-uploads/profile-updated.png" 
                     alt="Shaik Shafiya"
-                    className="w-full h-full object-cover scale-125"
-                    style={{ imageRendering: 'crisp-edges', objectPosition: 'center 10%' }}
+                    className="w-full h-full object-cover scale-110"
+                    style={{ imageRendering: 'crisp-edges', objectPosition: 'center 15%' }}
                   />
                 </div>
                 <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-cyan-400/20 to-blue-500/20"></div>
@@ -142,7 +142,7 @@ const Index = () => {
 
             {/* Content - Right Side */}
             <div className="lg:w-2/3 text-center lg:text-left">
-              <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+              <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-300 bg-clip-text text-transparent animate-fade-in">
                 Full Stack Developer
               </h1>
               <p className="text-xl md:text-2xl text-blue-200 mb-12 max-w-3xl leading-relaxed">
