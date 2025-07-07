@@ -132,9 +132,10 @@ const Index = () => {
               <div className="relative">
                 <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-gradient-to-r from-cyan-400 to-blue-500 shadow-2xl">
                   <img 
-                    src="/lovable-uploads/ac46b297-6684-4ce9-baa0-2176b8b6bcee.png" 
+                    src="/lovable-uploads/profile-new.png" 
                     alt="Shaik Shafiya"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-center"
+                    style={{ imageRendering: 'crisp-edges' }}
                   />
                 </div>
                 <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-cyan-400/20 to-blue-500/20"></div>
@@ -237,17 +238,22 @@ const Index = () => {
                   </div>
                   <Separator className="mb-4 bg-blue-400/30" />
                   <div className="flex gap-3">
-                    <Button asChild variant="outline" size="sm" className="flex-1 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-slate-900">
-                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                        <Github className="h-4 w-4" />
-                        Code
-                      </a>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="flex-1 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-slate-900 transition-all duration-300"
+                      onClick={() => window.open(project.github, '_blank', 'noopener,noreferrer')}
+                    >
+                      <Github className="h-4 w-4 mr-2" />
+                      View Code
                     </Button>
-                    <Button asChild size="sm" className="flex-1 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600">
-                      <a href={project.live} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                        <Eye className="h-4 w-4" />
-                        Live Demo
-                      </a>
+                    <Button 
+                      size="sm" 
+                      className="flex-1 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+                      onClick={() => window.open(project.live, '_blank', 'noopener,noreferrer')}
+                    >
+                      <Eye className="h-4 w-4 mr-2" />
+                      Live Demo
                     </Button>
                   </div>
                 </CardContent>
