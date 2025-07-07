@@ -63,9 +63,7 @@ const Index = () => {
   ];
 
   const skills = [
-    'JavaScript', 'Java', 'Python', 'React', 'HTML', 'CSS', 
-    'Spring Boot', 'MySQL', 'Bootstrap', 'Tailwind CSS', 
-    'TypeScript', 'Git', 'GitHub', 'Responsive Design'
+    'Core Java', 'Python', 'HTML', 'CSS', 'JavaScript', 'Spring Boot', 'SQL'
   ];
 
   const scrollToSection = (sectionId: string) => {
